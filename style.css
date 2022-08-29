@@ -1,0 +1,53 @@
+
+header {
+    height: 75px;
+    background-color: red;
+    font-size: 2rem;
+}
+
+.buscador{
+    height: 70vh;
+    font-size: 1.5rem;
+    color: black;
+    background-image: url(./assets/img/perfiles-de-aluminio.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+}
+
+.input-group {
+    width: 60%;
+}
+
+
+.card {
+    height: 80%;
+    width: 30%;
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+
+.card_container{
+    height: 60vh;
+}
+
+.subtitulo {
+    padding: 25px;
+}
+
+.productos {
+    background-color: lightgray;
+}
+
+footer, footer a , footer a {
+    background-color: gray;
+    text-decoration: none;
+    color: black;
+    height: 5vh;
+}
+
+i{
+    height: 20px;
+    color: black;
+}

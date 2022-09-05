@@ -2,15 +2,17 @@ let codigo=0
 let perfil1=10001, perfil2=20001 , perfil3=30001
 let perfil1Orden=0 , perfil2Orden=0, perfil3Orden=0
 let perfil1Stock=1000, perfil2Stock=1000, perfil3Stock=1000
-let cantidad=0
+let cantidad=0, stock =0
 let confirmacion="", agregarItems=""
 let perfil1Costo=300, perfil2Costo=500, perfil3Costo=800
 let usuario="", contrasena=""
+let arrStock =[]
+
 
 //Login
 function Login(){
     do{
-        usuario=prompt("Ingrese su usario")
+        usuario=prompt("Ingrese su usuario")
         contraseña=prompt("Ingrese su contraseña")
 
     }while (usuario !="admin" && contrasena !="admin")
@@ -19,8 +21,54 @@ function Login(){
 
 Login();
 
-//funcion a ingresar la cantidad de material a pedir
-function Pedido(){
+// Función Constructora para productos nuevos para el admin
+
+function Productos (codigo,nombre,stock){
+    this.codigo = codigo
+    this.nombre = nombre
+    this.stock = stock
+}
+
+let agregarProducto="" 
+
+do{
+    agregarProducto= prompt("Desea agregar productos? Confirme por SI o NO")
+
+    if(agregarProducto.toLowerCase()==="si"){
+        codigo = parseInt(prompt("Ingrese codigo de producto")) 
+        nombre = prompt("Ingrese nombre del producto")
+        stock = parseInt(prompt("Ingrese stock inicial del producto"))
+        let producto = new Productos(codigo, nombre, stock)
+
+        let confirmacion = prompt(`El producto a agregar es el siguiente:
+            ${producto.codigo}
+            ${producto.nombre}
+            ${producto.stock}. Confirme por SI o NO`)
+
+        if (confirmacion.toLowerCase()==="si"){
+            arrStock.push(producto);
+            alert("El producto ha sido creado");
+            agregarProducto =""
+
+        }else{
+            alert("El producto no ha sido creado")
+            agregarProducto =""
+        }
+        
+    }else  {
+        alert("No se han añadido objetos")
+    }
+
+}while (agregarProducto === "");
+
+
+arrStock.forEach(element => {
+    alert(`${element.nombre} ${element.codigo} ${element.stock}`)
+    
+});
+
+// a cambiar este sector del código por un array que compare con lo que esta en stock.
+/* function Pedido(){
     do{
 
         do{
@@ -114,4 +162,4 @@ function calcularCosto(item1,item2,item3){
     return  (1.21 *(item1 * perfil1Costo + item2 * perfil2Costo + item3 * perfil3Costo));
 }
 
-alert(`El costo final es de ${totalFinal}, con IVA incluido`)
+alert(`El costo final es de ${totalFinal}, con IVA incluido`) */

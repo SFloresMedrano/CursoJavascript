@@ -87,9 +87,8 @@ do{
                 prodSelecc.stock = cantidad;
                 arrCarrito.push(prodSelecc);
                 alert("El producto ha sido añadido")
-                arrStock[ubicacion].stock = cantStock-cantidad
                 Confirmacion();
-                
+                arrStock[ubicacion].stock = cantStock-cantidad 
 
             }else{
                 alert("El producto no se encuentra en el stock deseado.")
@@ -116,7 +115,7 @@ Cantidad pedida:${item.stock}
 Precio unitario:${item.precio}`))
 
 
-// Resta agregar un limitador de stock. 
+
 let precioTotal=0
 for (let i=0; i<arrCarrito.length;i++){
     precioTotal =(arrCarrito[i].precio * arrCarrito[i].stock) + precioTotal

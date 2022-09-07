@@ -1,13 +1,9 @@
-let codigo=0
-let perfil1=10001, perfil2=20001 , perfil3=30001
-let perfil1Orden=0 , perfil2Orden=0, perfil3Orden=0
-let perfil1Stock=1000, perfil2Stock=1000, perfil3Stock=1000
-let cantidad=0, stock =0
-let confirmacion="", agregarItems=""
-let perfil1Costo=300, perfil2Costo=500, perfil3Costo=800
-let usuario="", contrasena=""
-let arrStock =[]
-
+let codigo=0; codPedido=0;
+let cantidad=0, stock =0;
+let confirmacion="", agregarItems="";
+let usuario="", contrasena="";
+let arrStock =[] , prodSelecc =[] , arrCarrito=[];
+let cantStock=0;
 
 //Login
 function Login(){
@@ -18,6 +14,10 @@ function Login(){
     }while (usuario !="admin" && contrasena !="admin")
 
 }
+
+function Confirmacion(){
+    confirmacion = prompt("Desea agregar otro producto? Ingrese si o no")
+    }
 
 Login();
 
@@ -42,7 +42,7 @@ do{
         precio = parseInt(prompt("Ingrese el precio del producto"))
         let producto = new Productos(codigo, nombre, stock, precio)
 
-        let confirmacion = prompt(`El producto a agregar es el siguiente:
+        confirmacion = prompt(`El producto a agregar es el siguiente:
             ${producto.codigo}
             ${producto.nombre}
             ${producto.stock}
@@ -68,37 +68,62 @@ do{
 
 //Solicitud de pedido desde el cliente
 
-let codPedido=parseInt(prompt("Por favor ingrese el código del producto a buscar"));
-
-let arrCarrito=[];
 
 do{
-    let codPedido=parseInt(prompt("Por favor ingrese el código del producto a buscar"));
-    
-if ((arrStock.find(val=> val.codigo === codPedido))) {
-     let prodSelecc = arrStock.find(val=> val.codigo === codPedido)
+    codPedido=parseInt(prompt("Por favor ingrese el código del producto a buscar"));
 
-    confirmacion=prompt("El producto se encuentra cargado. Desea añadirlo a su carrito")
-    if(confirmacion.toLowerCase() ==="si"){
-        let cantidad = parseInt(prompt("Ingrese cantidad a añadir"));
-        prodSelecc.stock = cantidad;
-        arrCarrito.push(prodSelecc);
-        confirmacion=prompt("Desea agregar otro producto?")
+    if ((arrStock.find(val=> val.codigo === codPedido))) {
+        prodSelecc = arrStock.find(val=> val.codigo === codPedido);
+
+        let ubicacion =arrStock.findIndex(val=>val.codigo===codPedido);
+
+        confirmacion=prompt("El producto se encuentra cargado. Desea añadirlo a su carrito?");
+        
+        if(confirmacion.toLowerCase ()=== "si"){
+            cantStock =arrStock[ubicacion].stock
+            let cantidad = parseInt(prompt(`Ingrese cantidad a añadir. Cantidad en Stock ${cantStock}`));   
+            
+            if (cantStock>cantidad){
+                prodSelecc.stock = cantidad;
+                arrCarrito.push(prodSelecc);
+                alert("El producto ha sido añadido")
+                arrStock[ubicacion].stock = cantStock-cantidad
+                Confirmacion();
+                
+
+            }else{
+                alert("El producto no se encuentra en el stock deseado.")
+
+            }
+        }else{
+            alert("El producto no ha sido añadido");
+
+        };
+
     }else{
-        alert("El producto no ha sido añadido")
-        confirmacion=prompt("Desea agregar otro producto?")
-    }
+        alert("El producto no se encuentra cargado");
+        
 
-}else{
-    alert("El producto no se encuentra cargado")
-    confirmacion=prompt("Desea buscar otro producto?")
-};
-}while(confirmacion.toLowerCase() ==="si");
+    };
+
+}while(confirmacion != "no");
 
 alert("Se muestran los articulos de su carrito")
-arrCarrito.map(element=>alert(`Codigo:${element.codigo} 
-Nombre del producto:${element.nombre} 
-Cantidad pedida:${element.stock} 
-Precio unitario:${element.precio}`))
+
+arrCarrito.forEach(item=>alert(`Codigo:${item.codigo} 
+Nombre del producto:${item.nombre} 
+Cantidad pedida:${item.stock} 
+Precio unitario:${item.precio}`))
 
 
+// Resta agregar un limitador de stock. 
+let precioTotal=0
+for (let i=0; i<arrCarrito.length;i++){
+    precioTotal =(arrCarrito[i].precio * arrCarrito[i].stock) + precioTotal
+}
+
+let precioIva = precioTotal * 1.21
+
+alert(`Su carrito se compone de ${arrCarrito.length} items. 
+La suma total de los articulos es ${precioTotal}.
+El precio con Iva incluido es de ${precioIva}`)

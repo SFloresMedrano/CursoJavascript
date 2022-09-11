@@ -6,20 +6,14 @@ let arrStock =[] , prodSelecc =[] , arrCarrito=[];
 let cantStock=0; precioTotal=0, precioIva=0;
 
 //Login
-function Login(){
-    do{
-        usuario=prompt("Ingrese su usuario");
-        contraseña=prompt("Ingrese su contraseña");
 
-    }while (usuario !="admin" && contrasena !="admin");
-
-}
 
 function Confirmacion(){
     confirmacion = prompt("Desea agregar otro producto? Ingrese si o no")
     };
 
-Login();
+
+
 
 // Función Constructora para productos nuevos para el admin
 

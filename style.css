@@ -9,10 +9,15 @@ header {
     height: 70vh;
     font-size: 1.5rem;
     color: black;
+    display:flex;
     background-image: url(./assets/img/perfiles-de-aluminio.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    align-items: center;
+    position: relative;
+
+
 
 }
 
@@ -50,4 +55,51 @@ footer, footer a , footer a {
 i{
     height: 20px;
     color: black;
+}
+
+.modal-container {
+
+    visibility: hidden;
+    position:absolute;
+    left: -100%;
+}
+
+
+.modal-active {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-around;
+    visibility: visible;
+    position: absolute;
+    z-index: 1;
+    top: 30%;
+    left: 40%;
+    border: 2px solid gray;
+    background-color: rgb(235, 184, 184);
+    
+}
+
+.btn, .modal-container input{
+    margin: 10px;
+}
+
+.addProduct{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+
+}
+
+.btnadd, .btnrem {
+    width: 10vw;
+    background-color: white;
+    padding: 5px;
+    margin-top:15px;
+
 }

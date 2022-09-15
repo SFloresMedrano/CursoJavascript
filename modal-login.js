@@ -3,6 +3,8 @@ const abrirLogin = document.getElementById("open")
 const cerrarLogin  = document.getElementById("cerrar")
 const modalLogin = document.getElementById(".modal-login")
 
+let arrStock=[];
+
 
 abrirLogin.addEventListener("click",()=>{
     modalContainer.classList.toggle("modal-active");
@@ -30,7 +32,6 @@ iniciarSesion.addEventListener("click",()=>{
         newSec.classList.add(`addProduct`);
         document.body.prepend(newSec);
         newSec.innerHTML = `<div class="input-group mb-3">
-                                <span class="input-group-text">Código</span>
 
                                 <div class="form-floating">
                                 <input type="number" class="form-control" id="codigoProd" placeholder="Codigo">
@@ -38,7 +39,6 @@ iniciarSesion.addEventListener("click",()=>{
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <span class="input-group-text">Código</span>
 
                                 <div class="form-floating">
                                 <input type="text" class="form-control" id="nombreProd" placeholder="Nombre">
@@ -46,7 +46,6 @@ iniciarSesion.addEventListener("click",()=>{
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <span class="input-group-text">Código</span>
 
                                 <div class="form-floating">
                                 <input type="number" class="form-control" id="stockProd" placeholder="Stock">
@@ -54,7 +53,6 @@ iniciarSesion.addEventListener("click",()=>{
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <span class="input-group-text">Código</span>
 
                                 <div class="form-floating">
                                 <input type="number" class="form-control" id="precioProd" placeholder="Precio">
@@ -63,21 +61,12 @@ iniciarSesion.addEventListener("click",()=>{
                             </div>
         
                             <input class="btn button btnadd" type="submit" id="addProduct" value="Agregar Producto">
-                            <input class="btn button btnrem" type="submit" id="removeProduct" value="Remover Producto"> `;
+                            <input class="btn button btnrem" type="reset" id="removeProduct" value="Remover Producto"> `;
 
-                            const agregar = document.getElementById("addProduct");
-                            const remover = document.getElementById("removeProduct");
 
-                            agregar.addEventListener("click",()=>{
-                                let codigo = document.getElementById("codigoProd");
-                                let nombre = document.getElementById("nombreProd");
-                                let stock = document.getElementById("stockProd");
-                                let precio = document.getElementById("precioProd") ;
-                            
-                                let newProd = new Productos (codigo, nombre, stock, precio)
-                            
-                                alert(`${newProd.codigo} ${newProd.nombre} ${newProd.stock} ${newProd.precio}`)
-                            });
+
+                            AddProduct();
+
 
     }else if(user.toLowerCase()==="user" && pass.toLowerCase()==="user"){
         alert("Bienvenido user");

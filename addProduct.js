@@ -5,23 +5,50 @@ function Productos (codigo,nombre,stock,precio){
     this.precio = precio;
 };
 
-/* const agregar = document.getElementById("addProduct");
+
 const remover = document.getElementById("removeProduct");
 
-agregar.addEventListener("click",()=>{alert("LPM")}); */
+arrStock=[];
+
+function AddProduct (){ 
+    const addProduct = document.getElementById("addProduct");
+
+    addProduct.addEventListener("click",()=>{
 
 
-/* addProducto.addEventListener("click",()=>{
-    let codigo = parseInt(document.getElementById("codigoProd"));
-    let nombre = document.getElementById("nombreProd");
-    let stock = parseint(document.getElementById("stockProd"));
-    let precio = parseint(document.getElementById("precioProd")) ;
+        let codigo = (document.getElementById("codigoProd").value);
+        let nombre = document.getElementById("nombreProd").value;
+        let stock = (document.getElementById("stockProd").value);
+        let precio = (document.getElementById("precioProd").value);
+    
+        let newProd = new Productos (codigo, nombre, stock, precio)
+    
+        let confirmacion =prompt(`Se agregara el siguiente item:
+                        ${newProd.codigo} 
+                        ${newProd.nombre}
+                        ${newProd.stock} 
+                        ${newProd.precio}
+                        Confirme por SI o NO`)
 
-    let newProd = new Productos (codigo, nombre, stock, precio)
+                        if (confirmacion.toLowerCase()==="si"){
+            arrStock.push(newProd)
 
-    alert(newProd)
+            alert(arrStock[0].precio)
 
-}); */
+        } else if(confirmacion.toLowerCase()==="no"){}       
+    
+    });
+};
+
+function RemProduct(){
+    remProduct.addEventListener("click",()=>{
+        let codigo = parseint(document.getElementById("codigoProd").value);
+
+
+    })
+}
+
+
 
 
 //Agregar event Listener para botones

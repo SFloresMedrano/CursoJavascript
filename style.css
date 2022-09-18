@@ -16,9 +16,6 @@ header {
     background-size: contain;
     align-items: center;
     position: relative;
-
-
-
 }
 
 .input-group {
@@ -31,6 +28,7 @@ header {
     width: 30%;
     border: 1px solid grey;
     border-radius: 15px;
+    background-color: white;
 }
 
 .card_container{
@@ -87,19 +85,23 @@ i{
 }
 
 .addProduct{
-    height: 10vh;
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
     background-color: red;
+    padding-top: 20px;
 
 }
 
-.btnadd, .btnrem {
+.btnadd, .btnrem , .btnshow{
     width: 10vw;
     background-color: white;
     padding: 5px;
     margin-top:15px;
 
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
 }

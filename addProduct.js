@@ -8,8 +8,10 @@ class Productos {
 }
 
 function DeleteFields () {
-    const input=document.getElementsByClassName("form-control");
-    input.value="";
+    const input=document.querySelectorAll(".form-control");
+    input.forEach(item=> {
+        item.value="";
+    });
 };
 
 let newProduct = new Productos (0, "", 0, 0)
@@ -29,12 +31,11 @@ function AddProduct (){
         
         let div =document.createElement("div")
         div.classList.add("card")
-        div.innerHTML=` <img src=./assets/img/${newProduct.code} alt="${newProduct.name}" class="card_image"/>
+        div.innerHTML=` <img src=./assets/img/${newProduct.code}.jpg alt="${newProduct.name}" class="card_image"/>
                         <h3 class="card_h3"> ${newProduct.name}</h3>
                         <p class="card_p"> Cantidad en Stock: ${newProduct.stock}</p>
                         <p class="card_p"> Precio: ${newProduct.precio}</p>`;
         addProduct.append(div)
-
 
         confirmation =prompt(`Se agregara el siguiente item:
                         ${newProduct.code} 
@@ -43,23 +44,18 @@ function AddProduct (){
                         ${newProduct.price}
                         Confirme por SI o NO`)
 
-
         if (confirmation.toLowerCase() === "si"){
             arrayStock.push(newProduct);
             alert ("El producto ha sido agregado como stock.");
-        
-            const input=document.getElementsByClassName("form-control");
-            input.value="";
+            DeleteFields();
+
         
         } else if(confirmation.toLowerCase() ==="no"){
             alert("El producto no ha sido agregado");
             newProduct.code = 0;
             newProduct.name = 0;
             newProduct.stock = 0;
-            newProduct.price = 0;
-
-            const input=document.getElementsByClassName("form-control");
-            input.value="";
+            newProduct.price = 0;            
         }           
     });
 };
@@ -81,25 +77,24 @@ function RemoveProduct(){
             ${selectedProduct.price}
             Confirme por SI o NO`)
 
-                if (confirmation.toLowerCase()==="si"){
+                if (confirmation.toLowerCase() === "si"){
                     alert(arrayStock[location].code + " " + arrayStock.length)
                     arrayStock.splice(location, 1);
                     alert (`El producto ha sido removido.`)
                     DeleteFields();
 
-                } else if(confirmation.toLowerCase()==="no"){
+                } else if(confirmation.toLowerCase() === "no"){
                     alert("El producto no ha sido removido.");
                     newProduct.code = 0;
                     newProduct.name = 0;
                     newProduct.stock = 0;
                     newProduct.price = 0;
                     DeleteFields();
+
                 }  
         }else{
             alert("El producto no ha sido encontrado")
         };
-
-        
     });
 };
 
@@ -107,34 +102,43 @@ function RenderCard(){
     const showProduct=document.getElementById("showProduct");
     const addProduct = document.getElementById("containerInput");
     showProduct.addEventListener("click",(e)=>{
-        newProduct.code = (document.getElementById("productCode").value);
-        newProduct.name = document.getElementById("productName").value;
-        newProduct.stock = (document.getElementById("productStock").value);
-        newProduct.price = (document.getElementById("productPrice").value);  
-        
-        let div =document.createElement("div")
-        div.classList.add("card")
-        div.innerHTML=` <img src=./assets/img/${newProduct.code}.jpg alt="${newProduct.name}" class="card_image"/>
-                        <h3 class="card_h3"> ${newProduct.name}</h3>
-                        <p class="card_p"> Cantidad en Stock: ${newProduct.stock}</p>
-                        <p class="card_p"> Precio: ${newProduct.price}</p>`;
-        addProduct.append(div);
+        let cardCount=document.querySelectorAll(".card")
+        alert(cardCount.length)
+        if (cardCount.length <= 0){
+            newProduct.code = (document.getElementById("productCode").value);
+            newProduct.name = document.getElementById("productName").value;
+            newProduct.stock = (document.getElementById("productStock").value);
+            newProduct.price = (document.getElementById("productPrice").value);  
+            
+            let div =document.createElement("div")
+            div.classList.add("card")
+            div.innerHTML=` <img src=./assets/img/${newProduct.code}.jpg alt="${newProduct.name}" class="card_image"/>
+                            <h3 class="card_h3"> ${newProduct.name}</h3>
+                            <p class="card_p"> Cantidad en Stock: ${newProduct.stock}</p>
+                            <p class="card_p"> Precio: ${newProduct.price}</p>`;
+            addProduct.append(div);
+        }else{
+            newProduct.code = (document.getElementById("productCode").value);
+            newProduct.name = document.getElementById("productName").value;
+            newProduct.stock = (document.getElementById("productStock").value);
+            newProduct.price = (document.getElementById("productPrice").value);
 
-})
-    ;
+            let divCard=document.getElementById("card")
+            divCard.innerHTML=` <img src=./assets/img/${newProduct.code}.jpg alt="${newProduct.name}" class="card_image"/>
+            <h3 class="card_h3"> ${newProduct.name}</h3>
+            <p class="card_p"> Cantidad en Stock: ${newProduct.stock}</p>
+            <p class="card_p"> Precio: ${newProduct.price}</p>`;
+        }
+
+    });
 };
 
 function DeleteCard(){
-    let codeInput=document.getElementById("productCode")
-    let cardCount = document.querySelectorAll("card")
-    if (cardCount.length>0){
-        codeInput.addEventListener("change",()=>{
-            alert(cardCount.length)
-            let cardItem=document.getElementById("card");   
-            cardItem.remove();
-        })
-    }
-
-}
+    const addButton=document.getElementById("addProduct");
+    addButton.addEventListener("click",()=>{
+        const card=document.getElementById("card")
+        card.parentNode.removeChild(card)
+    })
+};
 
 // agregar funcionalidad para que el boton no agregue de mas

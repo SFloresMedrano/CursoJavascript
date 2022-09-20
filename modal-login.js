@@ -72,7 +72,9 @@ logIn.addEventListener("click",()=>{
                             AddProduct();
                             RemoveProduct();
                             RenderCard();
-                            DeleteCard();
+    
+
+
 
 
     }else if(user.toLowerCase() ==="user" && pass.toLowerCase() ==="user"){

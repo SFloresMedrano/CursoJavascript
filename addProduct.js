@@ -17,7 +17,7 @@ function DeleteFields () {
 let newProduct = new Productos (0, "", 0, 0)
 
 let confirmation="";
-let selectedProduct =[], arrayCart=[], arrayStock=[];
+let selectedProduct =[], arrayCart=[], arrayStock=[];cardCount=[];
 
 function AddProduct (){ 
     const addProduct = document.getElementById("addProduct");
@@ -48,6 +48,8 @@ function AddProduct (){
             arrayStock.push(newProduct);
             alert ("El producto ha sido agregado como stock.");
             DeleteFields();
+            DeleteCard();
+            
 
         
         } else if(confirmation.toLowerCase() ==="no"){
@@ -80,8 +82,9 @@ function RemoveProduct(){
                 if (confirmation.toLowerCase() === "si"){
                     alert(arrayStock[location].code + " " + arrayStock.length)
                     arrayStock.splice(location, 1);
-                    alert (`El producto ha sido removido.`)
+                    alert (`El producto ha sido removido.`);
                     DeleteFields();
+                    DeleteCard();
 
                 } else if(confirmation.toLowerCase() === "no"){
                     alert("El producto no ha sido removido.");
@@ -90,6 +93,7 @@ function RemoveProduct(){
                     newProduct.stock = 0;
                     newProduct.price = 0;
                     DeleteFields();
+                    DeleteCard();
 
                 }  
         }else{
@@ -100,9 +104,9 @@ function RemoveProduct(){
 
 function RenderCard(){
     const showProduct=document.getElementById("showProduct");
-    const addProduct = document.getElementById("containerInput");
+    let cardContainer = document.getElementsByClassName("cardContainer");
     showProduct.addEventListener("click",(e)=>{
-        let cardCount=document.querySelectorAll(".card")
+         cardCount=document.querySelectorAll(".card")
         alert(cardCount.length)
         if (cardCount.length <= 0){
             newProduct.code = (document.getElementById("productCode").value);
@@ -116,7 +120,7 @@ function RenderCard(){
                             <h3 class="card_h3"> ${newProduct.name}</h3>
                             <p class="card_p"> Cantidad en Stock: ${newProduct.stock}</p>
                             <p class="card_p"> Precio: ${newProduct.price}</p>`;
-            addProduct.append(div);
+            cardContainer[0].append(div);
         }else{
             newProduct.code = (document.getElementById("productCode").value);
             newProduct.name = document.getElementById("productName").value;
@@ -134,11 +138,27 @@ function RenderCard(){
 };
 
 function DeleteCard(){
-    const addButton=document.getElementById("addProduct");
-    addButton.addEventListener("click",()=>{
-        const card=document.getElementById("card")
-        card.parentNode.removeChild(card)
+
+        let cardContainer=document.getElementsByClassName("cardContainer");
+        cardContainer[0].firstElementChild.remove();
+        cardCount=document.querySelectorAll(".card")
+    
+};
+
+
+
+function LogOut(){
+    const logoutButton=document.getElementById("logoutButton");
+    logoutButton.addEventListener("click",()=>{
+        if(arrayStock.length>0){
+            localStorage.setItem("arrayStock",JSON.stringify(arrayStock));
+        }
+        
+        localStorage.setItem("user","");
+        let body=document.body;
+        body.firstElementChild.remove();
+        alert("Ud ha cerrado sesión");
     })
 };
 
-// agregar funcionalidad para que el boton no agregue de mas
+//Resta agregar metodos para remover tarjetas

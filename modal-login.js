@@ -25,7 +25,9 @@ logIn.addEventListener("click",()=>{
     let pass=document.getElementById("password").value;
 
     if(user.toLowerCase()==="admin" && pass.toLowerCase()==="admin"){
+        localStorage.setItem("user","admin")
         alert("Bienvenido admin");
+
         modalContainer.classList.remove("modal-active");
         
         let newSection=document.createElement("section");
@@ -34,7 +36,6 @@ logIn.addEventListener("click",()=>{
         document.body.prepend(newSection);
         newSection.innerHTML = `<form id="inputContainer class="inputContainer">
                                 <div class="input-group mb-3">
-
                                     <div class="form-floating">
                                     <input type="number" class="form-control" id="productCode" placeholder="code">
                                     <label for="codeInput">code</label>
@@ -66,12 +67,17 @@ logIn.addEventListener("click",()=>{
                                 <input class="btn button btnadd" type="submit" id="addProduct" value="Agregar Producto">
                                 <input class="btn button btnrem" type="reset" id="removeProduct" value="Remover Producto">
                                 <input class="btn button btnshow" type="button" id="showProduct" value="Mostrar Producto">
-                                </form>`
+                                <button type="button" id="logoutButton" class="btn-close" aria-label="Cerrar Sesión"></button>
+                                </form>
+
+                                <div class="cardContainer">
+                                </div>`
 
 
                             AddProduct();
                             RemoveProduct();
                             RenderCard();
+                            LogOut();
     
 
 
@@ -80,6 +86,7 @@ logIn.addEventListener("click",()=>{
     }else if(user.toLowerCase() ==="user" && pass.toLowerCase() ==="user"){
         alert("Bienvenido user");
         modalContainer.classList.remove("modal-active");
+        renderProducts();
     }else {
         alert("Usuario o contraseña incorrectos");
     }

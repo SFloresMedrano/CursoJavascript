@@ -1,5 +1,5 @@
 function renderProducts(){
-    let arrayProductsStorage=localStorage.getItem("arrStock")
+    let arrayProductsStorage=localStorage.getItem("arrayStock")
     let arrayProducts =[];
 
     if (arrayProductsStorage){

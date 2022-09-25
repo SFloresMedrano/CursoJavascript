@@ -41,6 +41,8 @@ header {
 
 .productos {
     background-color: lightgray;
+    height: auto;
+    
 }
 
 footer, footer a , footer a {

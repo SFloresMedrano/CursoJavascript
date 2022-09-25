@@ -7,19 +7,18 @@ class Productos {
     };
 }
 
-function DeleteFields () {
+function BlankFields () {
     const input=document.querySelectorAll(".form-control");
     input.forEach(item=> {
         item.value="";
     });
 };
 
-
-
 let newProduct = new Productos (0, "", 0, 0)
 
 let confirmation="";
 let selectedProduct =[], arrayCart=[], cardCount=[], arrayStock=[];
+
 
 function AddProduct (){ 
     const addProduct = document.getElementById("addProduct");
@@ -30,14 +29,7 @@ function AddProduct (){
         newProduct.name = document.getElementById("productName").value;
         newProduct.stock = (document.getElementById("productStock").value);
         newProduct.price = (document.getElementById("productPrice").value);        
-        
-        let div =document.createElement("div")
-        div.classList.add("card")
-        div.innerHTML=` <img src=./assets/img/${newProduct.code}.jpg alt="${newProduct.name}" class="card_image"/>
-                        <h3 class="card_h3"> ${newProduct.name}</h3>
-                        <p class="card_p"> Cantidad en Stock: ${newProduct.stock}</p>
-                        <p class="card_p"> Precio: ${newProduct.precio}</p>`;
-        addProduct.append(div)
+
 
         confirmation =prompt(`Se agregara el siguiente item:
                         ${newProduct.code} 
@@ -49,9 +41,8 @@ function AddProduct (){
         if (confirmation.toLowerCase() === "si"){
             arrayStock.push(newProduct);
             alert ("El producto ha sido agregado como stock.");
-            DeleteFields();
+            BlankFields();
             DeleteCard();
-            alert(arrayStock[0].value)
             localStorage.setItem("arrayStock",JSON.stringify(arrayStock));
                     
         } else if(confirmation.toLowerCase() ==="no"){
@@ -85,7 +76,7 @@ function RemoveProduct(){
                     alert(arrayStock[location].code + " " + arrayStock.length)
                     arrayStock.splice(location, 1);
                     alert (`El producto ha sido removido.`);
-                    DeleteFields();
+                    BlankFields();
                     DeleteCard();
 
                 } else if(confirmation.toLowerCase() === "no"){
@@ -94,7 +85,7 @@ function RemoveProduct(){
                     newProduct.name = 0;
                     newProduct.stock = 0;
                     newProduct.price = 0;
-                    DeleteFields();
+                    BlankFields();
                     DeleteCard();
 
                 }  
@@ -109,8 +100,8 @@ function RenderCard(){
     let cardContainer = document.getElementsByClassName("cardContainer");
     showProduct.addEventListener("click",(e)=>{
          cardCount=document.querySelectorAll(".card")
-        alert(cardCount.length)
-        if (cardCount.length <= 0){
+         
+        if(cardCount.length === 0){
             newProduct.code = (document.getElementById("productCode").value);
             newProduct.name = document.getElementById("productName").value;
             newProduct.stock = (document.getElementById("productStock").value);
@@ -123,30 +114,18 @@ function RenderCard(){
                             <p class="card_p"> Cantidad en Stock: ${newProduct.stock}</p>
                             <p class="card_p"> Precio: ${newProduct.price}</p>`;
             cardContainer[0].append(div);
-        }else{
-            newProduct.code = (document.getElementById("productCode").value);
-            newProduct.name = document.getElementById("productName").value;
-            newProduct.stock = (document.getElementById("productStock").value);
-            newProduct.price = (document.getElementById("productPrice").value);
-
-            let divCard=document.getElementById("card")
-            divCard.innerHTML=` <img src=./assets/img/${newProduct.code}.jpg alt="${newProduct.name}" class="card_image"/>
-            <h3 class="card_h3"> ${newProduct.name}</h3>
-            <p class="card_p"> Cantidad en Stock: ${newProduct.stock}</p>
-            <p class="card_p"> Precio: ${newProduct.price}</p>`;
         }
 
     });
 };
 
 function DeleteCard(){
-        cardCount=document.querySelectorAll(".card")
+        cardCount=document.getElementsByClassName("card")
+        alert(`Esta es la cantidad de tarjetas${cardCount.length}`)
         if (cardCount.length>0){
             let cardContainer=document.getElementsByClassName("cardContainer");
             cardContainer[0].firstElementChild.remove();
-            cardCount=document.querySelectorAll(".card")
-        }
-
+        };
     
 };
 
@@ -155,9 +134,9 @@ function DeleteCard(){
 function LogOut(){
     const logoutButton=document.getElementById("logoutButton");
     logoutButton.addEventListener("click",()=>{
-
-            localStorage.setItem("arrayStock",JSON.stringify(arrayStock));
- 
+/*         if(arrayStock.length>0){
+            localStorage.setItem("arrayStockStorage",JSON.stringify(arrayStock));
+        } */
         
         localStorage.setItem("user","");
         let body=document.body;

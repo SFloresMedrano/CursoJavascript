@@ -100,7 +100,7 @@ function RenderCard(){
     let cardContainer = document.getElementsByClassName("cardContainer");
     showProduct.addEventListener("click",(e)=>{
          cardCount=document.querySelectorAll(".card")
-         
+
         if(cardCount.length === 0){
             newProduct.code = (document.getElementById("productCode").value);
             newProduct.name = document.getElementById("productName").value;
@@ -129,15 +129,9 @@ function DeleteCard(){
     
 };
 
-
-
 function LogOut(){
     const logoutButton=document.getElementById("logoutButton");
     logoutButton.addEventListener("click",()=>{
-/*         if(arrayStock.length>0){
-            localStorage.setItem("arrayStockStorage",JSON.stringify(arrayStock));
-        } */
-        
         localStorage.setItem("user","");
         let body=document.body;
         body.firstElementChild.remove();
@@ -146,5 +140,3 @@ function LogOut(){
         buttonOpen.disabled=false;
     })
 };
-
-//Resta agregar metodos para remover tarjetas

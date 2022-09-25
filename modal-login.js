@@ -5,6 +5,19 @@ const modalLogin = document.getElementById(".modal-login")
 
 let arrayStockStorage=[];
 
+window.onload=()=>{
+    RenderProducts();
+    if (localStorage.getItem("user") === "admin"){
+        modalContainer.classList.remove("modal-active");
+        let buttonOpen=document.getElementById("open")
+        buttonOpen.disabled=true;
+        arrayStockStorage =(JSON.parse(localStorage.getItem("arrayStockStorage")));
+        AdminSection();
+        
+     }
+}
+
+
 //Ocultar/mostrar el login
 openLogin.addEventListener("click",()=>{
     modalContainer.classList.toggle("modal-active");
@@ -72,15 +85,6 @@ function AdminSection (){
     LogOut();
 };
 
-window.onload=()=>{
-    if (localStorage.getItem("user") === "admin"){
-        modalContainer.classList.remove("modal-active");
-        let buttonOpen=document.getElementById("open")
-        buttonOpen.disabled=true;
-        arrayStockStorage =(JSON.parse(localStorage.getItem("arrayStockStorage")));
-        AdminSection();
-     }
-}
 
 
 
@@ -104,7 +108,7 @@ logIn.addEventListener("click",()=>{
         }else if(user.toLowerCase() ==="user" && pass.toLowerCase() ==="user"){
             alert("Bienvenido user");
             modalContainer.classList.remove("modal-active");
-            renderProducts();
+            RenderProducts();
             localStorage.setItem("user","user");
         }else {
             alert("Usuario o contraseña incorrectos");

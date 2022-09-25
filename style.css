@@ -5,16 +5,18 @@ header {
     font-size: 2rem;
 }
 
+.buttonLogin {
+    border-radius: 32px;
+}
+
 .buscador{
     height: 70vh;
     font-size: 1.5rem;
     color: black;
-    display:flex;
     background-image: url(./assets/img/perfiles-de-aluminio.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    align-items: center;
     position: relative;
 }
 
@@ -23,16 +25,28 @@ header {
 }
 
 
-.card {
+.card , .cardProduct{
+    display:flex;
+    flex-direction: column;
     height: 80%;
     width: 30%;
     border: 1px solid grey;
     border-radius: 15px;
     background-color: white;
+    justify-content: space-around;
+    align-items: center;
+    background-color: darkgrey;
+}
+
+.card_image{
+    width: 80%;
+    border-radius: 25px;
+    margin-top: 15px;
 }
 
 .card_container{
-    height: 60vh;
+    height: auto;
+
 }
 
 .subtitulo {

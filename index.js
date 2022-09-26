@@ -12,9 +12,6 @@ function confirmation(){
     confirmation = prompt("Desea agregar otro producto? Ingrese si o no")
     };
 
-
-
-
 // Función Constructora para productos nuevos para el admin
 
 function Productos (code,name,stock,price){

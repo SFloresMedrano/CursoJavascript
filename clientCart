@@ -1,0 +1,17 @@
+const clientCart=[];
+
+const ClientCartAdd = (productCode)=>{
+    const clientCartContainer=document.getElementById("clientCartContainer");
+    alert("aca entra")
+    const RenderCartProducts=()=>{
+        let productIndex = arrayProducts.findIndex(product=> product.code ==productCode);
+        alert (`productIndex ${productIndex}`)
+        let productLoaded =(productIndex>0)?true:false;
+        productLoaded ? alert("El producto se encuentra cargado"):alert("El producto no se encuentra cargado");
+        let productQty=document.getElementById(`productQty${element.code}`);
+        alert (productQty);
+    
+/*          ({arrayProducts[productIndex].code,arrayProducts[productIndex].name,arrayProducts[productIndex].price,productQty.value} = clientProduct); */
+    };
+
+};

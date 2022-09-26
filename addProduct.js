@@ -7,6 +7,10 @@ class Productos {
     };
 }
 
+window.onbeforeunload=()=>{
+    localStorage.setItem("arrayStockStorage",JSON.stringify(arrayStock))
+};
+
 function BlankFields () {
     const input=document.querySelectorAll(".form-control");
     input.forEach(item=> {
@@ -17,7 +21,7 @@ function BlankFields () {
 let newProduct = new Productos (0, "", 0, 0)
 
 let confirmation="";
-let selectedProduct =[], arrayCart=[], cardCount=[], arrayStock=[];
+let selectedProduct =[], cardCount=[], arrayStock=[];
 
 
 function AddProduct (){ 
@@ -25,10 +29,10 @@ function AddProduct (){
 
     addProduct.addEventListener("click",(e)=>{
         e.preventDefault();
-        newProduct.code = (document.getElementById("productCode").value);
+        newProduct.code = document.getElementById("productCode").value;
         newProduct.name = document.getElementById("productName").value;
-        newProduct.stock = (document.getElementById("productStock").value);
-        newProduct.price = (document.getElementById("productPrice").value);        
+        newProduct.stock = document.getElementById("productStock").value;
+        newProduct.price = document.getElementById("productPrice").value;        
 
 
         confirmation =prompt(`Se agregara el siguiente item:
@@ -39,11 +43,14 @@ function AddProduct (){
                         Confirme por SI o NO`)
 
         if (confirmation.toLowerCase() === "si"){
+
             arrayStock.push(newProduct);
+            console.log(arrayStock.length);
             alert ("El producto ha sido agregado como stock.");
             BlankFields();
             DeleteCard();
-            localStorage.setItem("arrayStock",JSON.stringify(arrayStock));
+            
+
                     
         } else if(confirmation.toLowerCase() ==="no"){
             alert("El producto no ha sido agregado");
@@ -121,7 +128,6 @@ function RenderCard(){
 
 function DeleteCard(){
         cardCount=document.getElementsByClassName("card")
-        alert(`Esta es la cantidad de tarjetas${cardCount.length}`)
         if (cardCount.length>0){
             let cardContainer=document.getElementsByClassName("cardContainer");
             cardContainer[0].firstElementChild.remove();

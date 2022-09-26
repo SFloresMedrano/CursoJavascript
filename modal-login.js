@@ -12,10 +12,13 @@ window.onload=()=>{
         let buttonOpen=document.getElementById("open")
         buttonOpen.disabled=true;
         arrayStockStorage =(JSON.parse(localStorage.getItem("arrayStockStorage")));
-        AdminSection();
-        
+        AdminSection();   
      }
 }
+
+window.onbeforeunload=()=>{
+    localStorage.setItem("arrayStockStorage",JSON.stringify(arrayStock))
+};
 
 
 //Ocultar/mostrar el login
@@ -23,11 +26,9 @@ openLogin.addEventListener("click",()=>{
     modalContainer.classList.toggle("modal-active");
 });
 
-
 closeLogin.addEventListener("click",()=>{
     modalContainer.classList.remove("modal-active");
 });
-
 
 closeLogin.addEventListener("click",(e)=>{
     e.stopPropagation() ;
@@ -84,8 +85,6 @@ function AdminSection (){
     RenderCard();
     LogOut();
 };
-
-
 
 
 // Login al clickear el boton ingresar

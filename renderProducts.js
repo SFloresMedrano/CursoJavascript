@@ -1,15 +1,8 @@
 let arrayCart=[], arrayProducts=[];
 
 function RenderProducts(){
-    let arrayProductsStorage=localStorage.getItem("arrayStock")
-
-
-    if (arrayProductsStorage){
-        arrayProducts= JSON.parse(arrayProductsStorage);
-    }
     
-    if(arrayProducts.length>0){
-        arrayProducts.forEach(element => {
+        products.forEach(element => {
             let productContainer =document.createElement("div");
             productContainer.classList.add("cardProduct");
             productContainer.innerHTML=`
@@ -31,11 +24,9 @@ function RenderProducts(){
             const LoadButton=document.getElementById(`button${element.code}`)
             LoadButton.addEventListener("click",()=>{
                ClientCartAdd(element.code);
-               alert(`Se agrega el producto ${element.code}`)
 
                 })
             }
         )
     };
 
-};

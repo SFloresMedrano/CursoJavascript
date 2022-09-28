@@ -7,9 +7,7 @@ class Productos {
     };
 }
 
-window.onbeforeunload=()=>{
-    localStorage.setItem("arrayStockStorage",JSON.stringify(arrayStock))
-};
+
 
 function BlankFields () {
     const input=document.querySelectorAll(".form-control");
@@ -18,7 +16,7 @@ function BlankFields () {
     });
 };
 
-let newProduct = new Productos (0, "", 0, 0)
+
 
 let confirmation="";
 let selectedProduct =[], cardCount=[], arrayStock=[];
@@ -28,6 +26,7 @@ function AddProduct (){
     const addProduct = document.getElementById("addProduct");
 
     addProduct.addEventListener("click",(e)=>{
+        let newProduct = new Productos (0, "", 0, 0)
         e.preventDefault();
         newProduct.code = document.getElementById("productCode").value;
         newProduct.name = document.getElementById("productName").value;
@@ -106,20 +105,21 @@ function RenderCard(){
     const showProduct=document.getElementById("showProduct");
     let cardContainer = document.getElementsByClassName("cardContainer");
     showProduct.addEventListener("click",(e)=>{
-         cardCount=document.querySelectorAll(".card")
+        cardCount=document.querySelectorAll(".card")
+        
 
         if(cardCount.length === 0){
-            newProduct.code = (document.getElementById("productCode").value);
-            newProduct.name = document.getElementById("productName").value;
-            newProduct.stock = (document.getElementById("productStock").value);
-            newProduct.price = (document.getElementById("productPrice").value);  
+            let inputCode = (document.getElementById("productCode").value);
+            let inputName  = document.getElementById("productName").value;
+            let inputStock = (document.getElementById("productStock").value);
+            let inputPrice = (document.getElementById("productPrice").value);  
             
             let div =document.createElement("div")
             div.classList.add("card")
-            div.innerHTML=` <img src=./assets/img/${newProduct.code}.jpg alt="${newProduct.name}" class="card_image"/>
-                            <h3 class="card_h3"> ${newProduct.name}</h3>
-                            <p class="card_p"> Cantidad en Stock: ${newProduct.stock}</p>
-                            <p class="card_p"> Precio: ${newProduct.price}</p>`;
+            div.innerHTML=` <img src=./assets/img/${inputCode}.jpg alt="${inputName}" class="card_image"/>
+                            <h3 class="card_h3"> ${inputName}</h3>
+                            <p class="card_p"> Cantidad en Stock: ${inputStock}</p>
+                            <p class="card_p"> Precio: ${inputPrice}</p>`;
             cardContainer[0].append(div);
         }
 

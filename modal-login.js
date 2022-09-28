@@ -1,9 +1,10 @@
-const modalContainer= document.querySelector(".modal-container")
-const openLogin = document.getElementById("open")
-const closeLogin  = document.getElementById("cerrar")
-const modalLogin = document.getElementById(".modal-login")
+const modalContainer= document.querySelector(".modal-container");
+const openLogin = document.getElementById("open");
+const closeLogin  = document.getElementById("cerrar");
+const modalLogin = document.getElementById(".modal-login");
 
-let arrayStockStorage=[];
+
+let arrayStockStorage=[]; let clientCartStorage=[];
 
 window.onload=()=>{
     RenderProducts();
@@ -13,11 +14,21 @@ window.onload=()=>{
         buttonOpen.disabled=true;
         arrayStockStorage =(JSON.parse(localStorage.getItem("arrayStockStorage")));
         AdminSection();   
+     }else if(localStorage.getItem("user") === "user"){
+        console.log(localStorage.getItem("user"))
+        modalContainer.classList.remove("modal-active");
+        clientCartStorage = (JSON.parse(localStorage.getItem("arrayCartStorage")));
+        console.log(clientCartStorage);
      }
 }
 
 window.onbeforeunload=()=>{
-    localStorage.setItem("arrayStockStorage",JSON.stringify(arrayStock))
+    if(arrayStock.length>0){
+        localStorage.setItem("arrayStockStorage"),JSON.stringify(arrayStock);
+    }
+    if(clientCart.length>0){
+        localStorage.setItem("arrayCartStorage",JSON.stringify(clientCart));
+    }
 };
 
 

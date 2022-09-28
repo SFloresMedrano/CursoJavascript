@@ -8,6 +8,7 @@ let arrayStockStorage=[]; let clientCartStorage=[];
 
 window.onload=()=>{
     RenderProducts();
+    
     if (localStorage.getItem("user") === "admin"){
         modalContainer.classList.remove("modal-active");
         let buttonOpen=document.getElementById("open")
@@ -18,7 +19,7 @@ window.onload=()=>{
         console.log(localStorage.getItem("user"))
         modalContainer.classList.remove("modal-active");
         clientCartStorage = (JSON.parse(localStorage.getItem("arrayCartStorage")));
-        console.log(clientCartStorage);
+        clientCart=[...clientCartStorage];
      }
 }
 
@@ -112,6 +113,8 @@ logIn.addEventListener("click",()=>{
 
             let buttonOpen=document.getElementById("open")
             buttonOpen.disabled=true;
+            let buttonCart=document.getElementById("cartOpen")
+            buttonCart.disabled=true;
 
             AdminSection();
         
@@ -120,7 +123,9 @@ logIn.addEventListener("click",()=>{
             modalContainer.classList.remove("modal-active");
             RenderProducts();
             localStorage.setItem("user","user");
+
         }else {
             alert("Usuario o contraseña incorrectos");
         }
 });
+

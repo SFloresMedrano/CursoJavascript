@@ -5,8 +5,9 @@ header {
     font-size: 2rem;
 }
 
-.buttonLogin {
+.buttonLogin,.buttonCart {
     border-radius: 32px;
+    width: 45px;
 }
 
 .buscador{
@@ -120,4 +121,34 @@ i{
 .inputContainer {
     display: flex;
     flex-direction: column;
+}
+
+.clientCartContainer, .clientCartSection {
+    visibility: hidden;
+    position:absolute;
+    left: -100%;
+}
+
+.clientCartContainer-active{
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-around;
+    visibility: visible;
+    position: absolute;
+    z-index: 1;
+    top: 30%;
+    left: 40%;
+    border: 2px solid gray;
+    background-color: rgb(235, 184, 184);
+}
+
+.hide{
+    visibility: hidden;
+}
+
+.show {
+    visibility: visible;
 }

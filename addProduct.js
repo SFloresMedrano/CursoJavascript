@@ -144,5 +144,7 @@ function LogOut(){
         alert("Ud ha cerrado sesión");
         let buttonOpen=document.getElementById("open");
         buttonOpen.disabled=false;
+        let buttonCart=document.getElementById("cartOpen")
+        buttonCart.disabled=false;
     })
 };

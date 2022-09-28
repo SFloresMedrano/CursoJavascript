@@ -11,7 +11,6 @@ function RenderProducts(){
                 <p class="card_p"> Cantidad en Stock: ${element.stock}</p>
                 <p class="card_p"> Precio: ${element.price}</p>
                 <div class="buttonContainer"> 
-                    </button>
                     <div class="form-floating">
                     <input type="number" class="form-control QtyInput" id="productQty${element.code}" placeholder="Cantidad">
                     <label for="codeInput">Cantidad</label>

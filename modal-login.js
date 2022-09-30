@@ -14,6 +14,8 @@ window.onload=()=>{
         let buttonOpen=document.getElementById("open")
         buttonOpen.disabled=true;
         arrayStockStorage =(JSON.parse(localStorage.getItem("arrayStockStorage")));
+        let buttonCart=document.getElementById("cartOpen")
+        buttonCart.disabled=true;
         AdminSection();   
      }else if(localStorage.getItem("user") === "user"){
         console.log(localStorage.getItem("user"))
@@ -84,7 +86,6 @@ function AdminSection (){
     
     <input class="btn button btnadd" type="submit" id="addProduct" value="Agregar Producto">
     <input class="btn button btnrem" type="reset" id="removeProduct" value="Remover Producto">
-    <input class="btn button btnshow" type="button" id="showProduct" value="Mostrar Producto">
     <button type="button" id="logoutButton" class="btn-close" aria-label="Cerrar Sesión"></button>
     </form>
 
@@ -94,7 +95,6 @@ function AdminSection (){
 
     AddProduct();
     RemoveProduct();
-    RenderCard();
     LogOut();
 };
 
@@ -108,7 +108,7 @@ logIn.addEventListener("click",()=>{
 
         if(user.toLowerCase()==="admin" && pass.toLowerCase()==="admin"){
             localStorage.setItem("user","admin")
-            alert("Bienvenido admin");
+            swal("", "Bienvenido Admin", "success");
             modalContainer.classList.remove("modal-active");
 
             let buttonOpen=document.getElementById("open")
@@ -119,13 +119,14 @@ logIn.addEventListener("click",()=>{
             AdminSection();
         
         }else if(user.toLowerCase() ==="user" && pass.toLowerCase() ==="user"){
-            alert("Bienvenido user");
+            swal("", "Bienvenido User", "success");
             modalContainer.classList.remove("modal-active");
-            RenderProducts();
             localStorage.setItem("user","user");
+            let buttonOpen=document.getElementById("open")
+            buttonOpen.disabled=true;
 
         }else {
-            alert("Usuario o contraseña incorrectos");
+            swal("", "Contraseña o usuario incorrecto", "error");
         }
 });
 

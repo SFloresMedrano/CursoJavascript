@@ -7,16 +7,12 @@ class Productos {
     };
 }
 
-
-
 function BlankFields () {
     const input=document.querySelectorAll(".form-control");
     input.forEach(item=> {
         item.value="";
     });
 };
-
-
 
 let confirmation="";
 let selectedProduct =[], cardCount=[], arrayStock=[];
@@ -33,31 +29,31 @@ function AddProduct (){
         newProduct.stock = document.getElementById("productStock").value;
         newProduct.price = document.getElementById("productPrice").value;        
 
+        let imageURL = `./assets/img/${newProduct.code}.jpg`
 
-        confirmation =prompt(`Se agregara el siguiente item:
-                        ${newProduct.code} 
-                        ${newProduct.name}
-                        ${newProduct.stock} 
-                        ${newProduct.price}
-                        Confirme por SI o NO`)
-
-        if (confirmation.toLowerCase() === "si"){
-
-            arrayStock.push(newProduct);
-            console.log(arrayStock.length);
-            alert ("El producto ha sido agregado como stock.");
-            BlankFields();
-            DeleteCard();
-            
-
-                    
-        } else if(confirmation.toLowerCase() ==="no"){
-            alert("El producto no ha sido agregado");
-            newProduct.code = 0;
-            newProduct.name = 0;
-            newProduct.stock = 0;
-            newProduct.price = 0;            
-        }           
+        swal({
+            title: `Se agregara el siguiente item:`,
+            text: `
+            Código: ${newProduct.code} 
+            Nombre:${newProduct.name}
+            Stock: ${newProduct.stock} 
+            Precio: ${newProduct.price}`,
+            icon: imageURL,
+            buttons: true,
+          })
+          .then((productAdd) => {
+            if (productAdd) {
+              swal("El producto ha sido agregado", {
+                icon: "success",
+              });
+              arrayStock.push(newProduct);
+              console.log(arrayStock.length);
+              BlankFields();
+            } else {
+                swal("", "El producto no ha sido añadido", "error");
+                BlankFields();
+            }
+          });       
     });
 };
 
@@ -99,40 +95,6 @@ function RemoveProduct(){
             alert("El producto no ha sido encontrado")
         };
     });
-};
-
-function RenderCard(){
-    const showProduct=document.getElementById("showProduct");
-    let cardContainer = document.getElementsByClassName("cardContainer");
-    showProduct.addEventListener("click",(e)=>{
-        cardCount=document.querySelectorAll(".card")
-        
-
-        if(cardCount.length === 0){
-            let inputCode = (document.getElementById("productCode").value);
-            let inputName  = document.getElementById("productName").value;
-            let inputStock = (document.getElementById("productStock").value);
-            let inputPrice = (document.getElementById("productPrice").value);  
-            
-            let div =document.createElement("div")
-            div.classList.add("card")
-            div.innerHTML=` <img src=./assets/img/${inputCode}.jpg alt="${inputName}" class="card_image"/>
-                            <h3 class="card_h3"> ${inputName}</h3>
-                            <p class="card_p"> Cantidad en Stock: ${inputStock}</p>
-                            <p class="card_p"> Precio: ${inputPrice}</p>`;
-            cardContainer[0].append(div);
-        }
-
-    });
-};
-
-function DeleteCard(){
-        cardCount=document.getElementsByClassName("card")
-        if (cardCount.length>0){
-            let cardContainer=document.getElementsByClassName("cardContainer");
-            cardContainer[0].firstElementChild.remove();
-        };
-    
 };
 
 function LogOut(){

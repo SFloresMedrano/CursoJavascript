@@ -71,7 +71,7 @@
         <section class="buscador container-fluid d-flex align-items-center justify-content-center">
             <div class="input-group flex-nowrap">
                 <span class="input-group-text" id="addon-wrapping">Buscar</span>
-                <input type="text" class="form-control" placeholder="Ingrese Código o nombre del producto" aria-label="code/name" aria-describedby="addon-wrapping">
+                <input type="text" class="form-control" id="buscador" placeholder="Ingrese Código o nombre del producto" aria-label="code/name" aria-describedby="addon-wrapping">
               </div>
 
         </section>
@@ -79,7 +79,7 @@
 
           <h2 class="subtitulo container-fluid text-center" id="subtitulo">Nuestros productos</h2>
           
-          <div class="container">
+          <div class="container" id="mainContainer">
               <div class="card_container align-items-center container row g-6 justify-content-around d-flex p-3 flex-wrap" id="productContainer">
 
                       
@@ -158,6 +158,7 @@
     <script src="./renderProducts.js"></script>
     <script src="./products.js"></script>
     <script src="./clientCart.js"></script>
+    <script src="./searchInput.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   
 </body>

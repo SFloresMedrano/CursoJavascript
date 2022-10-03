@@ -1,10 +1,12 @@
 let arrayCart=[], arrayProducts=[];
 
-function RenderProducts(){
-    
-        products.forEach(element => {
+function RenderProducts(data){
+        let mainContainer=document.getElementById("productContainer");
+        mainContainer.innerHTML="";
+        data.forEach(element => {
             let productContainer =document.createElement("div");
             productContainer.classList.add("cardProduct");
+            productContainer.classList.add(`${element.code}`)
             productContainer.innerHTML=`
                 <img src=./assets/img/${element.code}.jpg alt="${element.name}" class="card_image"/>
                 <h3 class="card_h3"> ${element.name}</h3>
@@ -17,7 +19,7 @@ function RenderProducts(){
                     </div>
                     <input class="btn button btnLoad" type="button" id=button${element.code} value="Agregar al Carrito">
                 </div>`
-            let mainContainer=document.getElementById("productContainer")
+
             mainContainer.append(productContainer)
 
             const LoadButton=document.getElementById(`button${element.code}`)

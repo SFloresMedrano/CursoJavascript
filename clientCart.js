@@ -19,11 +19,16 @@ const ClientCartAdd = (productCode)=>{
     if((products[productIndex].stock>=productQty)&&(productQty>0)){
         newItem.stock=productQty;
         clientCart.push(newItem);
+        let buscador=document.getElementById("buscador")
+        buscador.value="";
+        swal("", "El producto ha sido añadido correctamente", "success");
+        fetchProducts();
+        
+
     }else{
         alert("La cantidad ingresada supera al stock. Controle la cantidad");
         productInput.value=0;
     };
-console.log(clientCart)
 };
 
 function ClientCartRender(){

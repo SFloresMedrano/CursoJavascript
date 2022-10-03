@@ -7,7 +7,8 @@ const modalLogin = document.getElementById(".modal-login");
 let arrayStockStorage=[]; let clientCartStorage=[];
 
 window.onload=()=>{
-    RenderProducts();
+    fetchProducts(); 
+
     
     if (localStorage.getItem("user") === "admin"){
         modalContainer.classList.remove("modal-active");
@@ -130,3 +131,9 @@ logIn.addEventListener("click",()=>{
         }
 });
 
+const fetchProducts=async()=>{
+    let respuesta = await fetch("./products.json")
+    let data= await respuesta.json();
+    RenderProducts(data);
+    
+}

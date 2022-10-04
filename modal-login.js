@@ -4,11 +4,10 @@ const closeLogin  = document.getElementById("cerrar");
 const modalLogin = document.getElementById(".modal-login");
 
 
-let arrayStockStorage=[]; let clientCartStorage=[];
+let arrayStockStorage=[], clientCartStorage=[],fetchedProducts=[];
 
 window.onload=()=>{
-    fetchProducts(); 
-
+    fetchProducts();
     
     if (localStorage.getItem("user") === "admin"){
         modalContainer.classList.remove("modal-active");
@@ -54,7 +53,7 @@ function AdminSection (){
     let newSection=document.createElement("section");
     newSection.classList.add(`addProduct`);
     newSection.setAttribute("id","containerInput")
-    document.body.prepend(newSection);
+    document.head.append(newSection);
     newSection.innerHTML = `<form id="inputContainer class="inputContainer">
     <div class="input-group mb-3">
         <div class="form-floating">
@@ -128,12 +127,12 @@ logIn.addEventListener("click",()=>{
 
         }else {
             swal("", "Contraseña o usuario incorrecto", "error");
-        }
+        };
 });
 
 const fetchProducts=async()=>{
     let respuesta = await fetch("./products.json")
     let data= await respuesta.json();
     RenderProducts(data);
-    
-}
+    fetchedProducts=[...data]
+};

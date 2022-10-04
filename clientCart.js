@@ -6,7 +6,7 @@ const clientCartSection=document.getElementById("clientCartSection");
 
 const ClientCartAdd = (productCode)=>{
     const clientCartContainer=document.getElementsByClassName("clientCartContainer");
-    let productIndex = products.findIndex(val=> val.code ===productCode);
+    let productIndex = fetchedProducts.findIndex(val=> val.code ===productCode);
     if (!clientCartStorage){
         clientCartStorage=[]; 
     }else {
@@ -15,8 +15,8 @@ const ClientCartAdd = (productCode)=>{
     }
     let productInput=document.getElementById(`productQty${productCode}`);
     productQty = productInput.value; 
-    let newItem=(products[productIndex]);
-    if((products[productIndex].stock>=productQty)&&(productQty>0)){
+    let newItem=(fetchedProducts[productIndex]);
+    if((fetchedProducts[productIndex].stock>=productQty)&&(productQty>0)){
         newItem.stock=productQty;
         clientCart.push(newItem);
         let buscador=document.getElementById("buscador")

@@ -3,11 +3,13 @@ function SearchProduct(){
     const container=document.getElementById("container");
     
     buscador.addEventListener("input",()=>{
+ 
         let searchInput=parseInt(buscador.value);
+        console.log(typeof searchInput)
         let searchInputName=buscador.value.toLowerCase();
-        let foundItem=products.findIndex(item=> item.code === searchInput);
+        let foundItem=fetchedProducts.findIndex(item=> item.code === searchInput);
         let newProduct= new Productos(0,"",0,0);
-        newProduct=products[foundItem]
+        newProduct=fetchedProducts[foundItem]
         if(foundItem>=0){
             ShowSearchedProduct(newProduct);
         }else{

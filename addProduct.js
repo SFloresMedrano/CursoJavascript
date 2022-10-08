@@ -98,15 +98,18 @@ function RemoveProduct(){
 };
 
 function LogOut(){
+
     const logoutButton=document.getElementById("logoutButton");
     logoutButton.addEventListener("click",()=>{
         localStorage.setItem("user","");
-        let body=document.body;
-        body.firstElementChild.remove();
-        alert("Ud ha cerrado sesión");
+        swal("Ud. ha cerrado sesión", "¡Hasta Luego!", "success");
         let buttonOpen=document.getElementById("open");
         buttonOpen.disabled=false;
         let buttonCart=document.getElementById("cartOpen")
         buttonCart.disabled=false;
+        let list=document.getElementById("list")
+        list.lastChild.remove();
+        let productLoader=document.getElementById("productLoader")
+        productLoader.innerHTML=``;
     })
 };

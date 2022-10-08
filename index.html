@@ -17,7 +17,7 @@
 </head>
 <body >
     <!-- Header -->
-    <header class="d-flex align-items-center justify-content-between">
+    <header class="d-flex flex-column align-items-center justify-content-between" id="header">
         <div class="container d-flex justify-content-between align-items-center">
             <div>
                 <a class="navbar-brand logo" href="./index.html"><img src="" alt="Alutan" />
@@ -31,12 +31,9 @@
                         <span class="navbar-toggler-icon"></span>
                       </button>
                       <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
+                        <ul class="navbar-nav" id="list">
                           <li class="nav-item fs-5">
                             <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
-                          </li>
-                          <li class="nav-item fs-5">
-                            <a class="nav-link active" href="./pages/nosotros.html">Nosotros</a>
                           </li>
                           <li class="nav-item fs-5">
                             <a class="nav-link active" href="./pages/nuestras-obras.html">Productos</a>
@@ -62,8 +59,10 @@
                     </div>
                   </nav>
             </div>
+            
         </div>
-
+        <div id="productLoader">
+        </div>
     </header>
     
     <!-- Main -->

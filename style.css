@@ -1,8 +1,12 @@
 
 header {
-    height: 75px;
     background-color: red;
     font-size: 2rem;
+}
+
+.form-control{
+    width:250px;
+    font-size: 1rem;
 }
 
 .buttonLogin,.buttonCart {

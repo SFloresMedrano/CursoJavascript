@@ -4,18 +4,21 @@ function SearchProduct(){
     
     buscador.addEventListener("input",()=>{
  
-        let searchInput=parseInt(buscador.value);
-        console.log(typeof searchInput)
-        let searchInputName=buscador.value.toLowerCase();
-        let foundItem=fetchedProducts.findIndex(item=> item.code === searchInput);
-        let newProduct= new Productos(0,"",0,0);
-        newProduct=fetchedProducts[foundItem]
-        if(foundItem>=0){
+        let searchInput = buscador.value.toLowerCase();
+        let foundItem = fetchedProducts.findIndex(item=> item.code === searchInput);
+        let foundItemName = fetchedProducts.findIndex(item=>item.name === searchInput);
+
+        if (foundItem>=0){
+            let newProduct = new Productos(0,"",0,0);
+            newProduct = fetchedProducts[foundItem];
+            ShowSearchedProduct(newProduct);
+        }else if(foundItemName>0){
+            let newProduct = new Productos(0,"",0,0);
+            newProduct = fetchedProducts[foundItemName];
             ShowSearchedProduct(newProduct);
         }else{
-            console.log("No hay objeto")
+            RenderProducts(fetchedProducts);
         };
-        return foundItem
     });
 };
 

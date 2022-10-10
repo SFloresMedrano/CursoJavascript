@@ -41,7 +41,7 @@ function ClientCartRender(){
             div.innerHTML=`
                 <img src=./assets/img/${element.code}.jpg alt="${element.name}" class="card_image"/>
                 <h3 class="card_h3"> ${element.name}</h3>
-                <p class="card_p"> Cantidad en Stock: ${element.stock}</p>
+                <p class="card_p"> Cantidad en Carrito: ${element.stock}</p>
                 <p class="card_p"> Precio: ${element.price}</p>
                 <div class="buttonContainer"> 
                     <div class="form-floating">
@@ -68,5 +68,8 @@ cartClose.addEventListener("click",()=>{
 });
 
 function DeleteItem(itemID){
-    console.log(itemID);
+    let btnemptyItem=document.getElementById(`emptyItem${itemID}`);
+    let itemIndex=clientCart.findIndex(item=>item.code === itemID.toString())
+    clientCart.splice(itemIndex,1);
+    ClientCartRender();
 }

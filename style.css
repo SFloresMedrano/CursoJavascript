@@ -34,17 +34,19 @@ header {
     display:flex;
     flex-direction: column;
     height: 80%;
-    width: 30%;
+    width: 25%;
     border: 1px solid grey;
     border-radius: 15px;
     background-color: white;
     justify-content: space-around;
     align-items: center;
     background-color: darkgrey;
+    margin: 0px 10px;
 }
 
 .card_image{
     width: 80%;
+    height: auto;
     border-radius: 25px;
     margin-top: 15px;
 }
@@ -135,7 +137,7 @@ i{
 
 .clientCartContainer-active{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: auto;
     padding: 20px;
     align-items: center;
@@ -147,6 +149,51 @@ i{
     left: 40%;
     border: 2px solid gray;
     background-color: rgb(235, 184, 184);
+    transform: translate(-25%,-25%);
+    backdrop-filter: opacity(20%);
+}
+
+.cartCard{
+    display:flex;
+    height: 200px;
+    width: auto;
+    padding:20px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: lightgrey;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px 0px;
+}
+
+.cartCard .card_image{
+    width:150px;
+    margin: 5px;
+}
+
+.cartHeader {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 80%;
+}
+
+.btnemptyItem{
+    width:100px;
+    background-color: lightblue;
+    border: 2px solid black;
+}
+
+.btnemptyItem:hover{
+    background-color: red;
+    transition: all 1s ease-in-out;
+}
+
+.btn-close {
+    background-color: lightgrey;
+    border: 1px solid black;
+    height: 10px;
+    border-radius: 10px;
 }
 
 .hide{

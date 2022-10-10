@@ -1,4 +1,6 @@
-let arrayCart=[], arrayProducts=[];
+let arrayCart=[];
+
+
 
 function RenderProducts(data){
         let mainContainer=document.getElementById("productContainer");

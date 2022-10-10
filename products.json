@@ -1,27 +1,27 @@
     [{
-        "code":1000,
-        "name":"Perfil 1",
+        "code":"1000",
+        "name":"perfil 1",
         "stock":500,
         "price":2000
     },{
-        "code":1001,
-        "name":"Perfil 2",
+        "code":"1001",
+        "name":"perfil 2",
         "stock":300,
         "price":2500
     
     },{
-        "code":1002,
-        "name":"Perfil 3",
+        "code":"1002",
+        "name":"perfil 3",
         "stock":100,
         "price":1800
     },{
-        "code":1003,
-        "name":"Perfil 4",
+        "code":"1003",
+        "name":"perfil 4",
         "stock":1000,
         "price":2300
     },{
-        "code":1004,
-        "name":"Perfil 5",
+        "code":"1004",
+        "name":"perfil 5",
         "stock":200,
         "price":3000
     }]

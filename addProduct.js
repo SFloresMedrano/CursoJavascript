@@ -17,14 +17,14 @@ function BlankFields () {
 let confirmation="";
 let selectedProduct =[], cardCount=[], arrayStock=[];
 
-
+//Agrega productos a la base de datos de productos, segun un admin
 function AddProduct (){ 
     const addProduct = document.getElementById("addProduct");
 
     addProduct.addEventListener("click",(e)=>{
         let newProduct = new Productos (0, "", 0, 0)
         e.preventDefault();
-        newProduct.code = document.getElementById("productCode").value;
+        newProduct.code = document.getElementById("productCode").value.toString();
         newProduct.name = document.getElementById("productName").value;
         newProduct.stock = document.getElementById("productStock").value;
         newProduct.price = document.getElementById("productPrice").value;        
@@ -47,8 +47,8 @@ function AddProduct (){
                 icon: "success",
               });
               arrayStock.push(newProduct);
-              console.log(arrayStock.length);
               BlankFields();
+              
             } else {
                 swal("", "El producto no ha sido añadido", "error");
                 BlankFields();
@@ -57,6 +57,7 @@ function AddProduct (){
     });
 };
 
+//Codigo para remover productos del JSON por parte de un admin(sin finalizar)
 function RemoveProduct(){
     const removeProduct = document.getElementById("removeProduct");
 
@@ -97,8 +98,8 @@ function RemoveProduct(){
     });
 };
 
+//Logout
 function LogOut(){
-
     const logoutButton=document.getElementById("logoutButton");
     logoutButton.addEventListener("click",()=>{
         localStorage.setItem("user","");

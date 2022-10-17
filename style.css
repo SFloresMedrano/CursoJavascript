@@ -9,7 +9,7 @@ header {
     font-size: 1rem;
 }
 
-.buttonLogin,.buttonCart {
+.buttonLogin,.buttonCart, .buttonLogout {
     border-radius: 32px;
     width: 45px;
 }

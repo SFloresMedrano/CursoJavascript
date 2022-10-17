@@ -112,5 +112,8 @@ function LogOut(){
         list.lastChild.remove();
         let productLoader=document.getElementById("productLoader")
         productLoader.innerHTML=``;
+        clientCart=[];
+        localStorage.setItem("clientCartStorage",JSON.stringify(clientCart));
+    
     })
 };

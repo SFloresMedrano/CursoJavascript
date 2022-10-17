@@ -26,6 +26,7 @@ const ClientCartAdd = (productCode) => {
     buscador.value = '';
     swal('', 'El producto ha sido añadido correctamente', 'success');
     fetchProducts();
+    ClientCartRender();
   } else {
     alert('La cantidad ingresada supera al stock. Controle la cantidad');
     productInput.value = 0;

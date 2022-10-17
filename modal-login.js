@@ -20,21 +20,29 @@ window.onload=()=>{
         arrayStockStorage =(JSON.parse(localStorage.getItem("arrayStockStorage")));
         let buttonCart=document.getElementById("cartOpen")
         buttonCart.disabled=true;
-        AdminSection();   
+        AdminSection();  
+        if (document.getElementById("logoutButton")>0) {
+            LogoutButton();
+            LogOut();
+        };
+
      }else if(localStorage.getItem("user") === "user"){
-        console.log(localStorage.getItem("user"))
         modalContainer.classList.remove("modal-active");
-        clientCartStorage = (JSON.parse(localStorage.getItem("arrayCartStorage")));
-        clientCart=[...clientCartStorage];
+        let buttonOpen=document.getElementById("open")
+        buttonOpen.disabled=true;
+        clientCartStorage = (JSON.parse(localStorage.getItem("clientCartStorage")));
+        if (clientCartStorage){
+            clientCart=[...clientCartStorage];
+            ClientCartRender();
+        }
+        LogoutButton();
+        LogOut();
      }
 }
 
 window.onbeforeunload=()=>{
-    if(arrayStock.length>0){
-        localStorage.setItem("arrayStockStorage"),JSON.stringify(arrayStock);
-    }
     if(clientCart.length>0){
-        localStorage.setItem("arrayCartStorage",JSON.stringify(clientCart));
+        localStorage.setItem("clientCartStorage",JSON.stringify(clientCart));
     }
 };
 
@@ -58,7 +66,6 @@ function AdminSection (){
     newSection.classList.add(`addProduct`);
     newSection.setAttribute("id","containerInput")
     let productLoader=document.getElementById("productLoader")
-    console.log(header)
     productLoader.append(newSection);
     newSection.innerHTML = 
     `
@@ -119,7 +126,7 @@ function LogoutButton(){
     let list=document.getElementById(`list`);
     logoutButton.innerHTML=`
     <li>
-    <button class="buttonCart nav-link active fs-5" id="logoutButton">
+    <button class="buttonLogout nav-link active fs-5" id="logoutButton">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
             <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
@@ -136,6 +143,8 @@ const logIn = document.getElementById("logIn");
 logIn.addEventListener("click",()=>{
     let user=document.getElementById("user").value;
     let pass=document.getElementById("password").value;
+    clientCart=[];
+    localStorage.setItem("clientCartStorage",JSON.stringify(clientCart));
 
         if(user.toLowerCase()==="admin" && pass.toLowerCase()==="admin"){
             localStorage.setItem("user","admin")
@@ -146,7 +155,12 @@ logIn.addEventListener("click",()=>{
             buttonOpen.disabled=true;
             let buttonCart=document.getElementById("cartOpen")
             buttonCart.disabled=true;
-            AdminSection();
+            AdminSection();  
+            if (document.querySelectorAll(".logoutButton")<1) {
+                LogoutButton();
+                LogOut();
+            } 
+
 
         }else if(user.toLowerCase() ==="user" && pass.toLowerCase() ==="user"){
             swal("", "Bienvenido User", "success");
@@ -155,6 +169,7 @@ logIn.addEventListener("click",()=>{
             let buttonOpen=document.getElementById("open")
             buttonOpen.disabled=true;
             LogoutButton();
+            LogOut();
 
         }else {
             swal("", "Contraseña o usuario incorrecto", "error");

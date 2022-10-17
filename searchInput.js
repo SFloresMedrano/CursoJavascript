@@ -7,14 +7,16 @@ function SearchProduct(){
         let searchInput = buscador.value.toLowerCase();
         let foundItem = fetchedProducts.findIndex(item=> item.code === searchInput);
         let foundItemName = fetchedProducts.findIndex(item=>item.name === searchInput);
+        console.log(foundItemName)
 
         if (foundItem>=0){
             let newProduct = new Productos(0,"",0,0);
             newProduct = fetchedProducts[foundItem];
             ShowSearchedProduct(newProduct);
-        }else if(foundItemName>0){
+        }else if(foundItemName>=0){
             let newProduct = new Productos(0,"",0,0);
             newProduct = fetchedProducts[foundItemName];
+            console.log("Encontrado")
             ShowSearchedProduct(newProduct);
         }else{
             RenderProducts(fetchedProducts);

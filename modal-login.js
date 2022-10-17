@@ -2,12 +2,16 @@ const modalContainer= document.querySelector(".modal-container");
 const openLogin = document.getElementById("open");
 const closeLogin  = document.getElementById("cerrar");
 const modalLogin = document.getElementById(".modal-login");
+let uploadedImage="";
 
 
 let arrayStockStorage=[], clientCartStorage=[],fetchedProducts=[];
 
 window.onload=()=>{
     fetchProducts();
+    scrollProducts();   
+    scrollContact();
+
     
     if (localStorage.getItem("user") === "admin"){
         modalContainer.classList.remove("modal-active");
@@ -58,10 +62,10 @@ function AdminSection (){
     productLoader.append(newSection);
     newSection.innerHTML = 
     `
-    <div>
+        <div class="formContainer d-flex f-row" id="formContainer">
         <form id="inputContainer" class="inputContainer">
         <div class="input-group mb-3 fs-6">
-                <div class="form-floating">
+            <div class="form-floating">
                 <input type="number" class="form-control" id="productCode" placeholder="code">
                 <label for="codeInput">Codigo</label>
             </div>
@@ -88,25 +92,25 @@ function AdminSection (){
             </div>
         </div>
         
-        
         <div class="buttonContainer">
             <input class="btn button btnadd" type="submit" id="addProduct" value="Agregar Producto">
             <input class="btn button btnrem" type="reset" id="removeProduct" value="Remover Producto">
         </div>
 
         </form>
-
-        <div class="cardContainer">
         </div>
-    </div>`
-
-
+        <div id="imageContainer" class="imageContainer d-flex justify-content-center">
+            <div class="cardContainer">
+                <input type="file" onchange="UpdateImage()" id="imageInput" accept="image/png,image/jpg" >
+                <div><img src class="displayImage" alt=""/></div>
+            </div>
+        </div>`
 
     AddProduct();
     RemoveProduct();
     LogoutButton();
     LogOut();
-    
+
 };
 
 function LogoutButton(){
@@ -163,3 +167,39 @@ const fetchProducts=async()=>{
     RenderProducts(data);
     fetchedProducts=[...data]
 };
+
+const scrollProducts=()=>{
+    let productsButton=document.getElementById("productsButton");
+    productsButton.addEventListener("click",()=>{
+        let products=document.getElementById("productos")
+        products.scrollIntoView();
+    });
+};
+
+const scrollContact=()=>{
+    let productsButton=document.getElementById("contactButton");
+    productsButton.addEventListener("click",()=>{
+        let contact=document.getElementById("contactSection")
+        contact.scrollIntoView();
+    });
+};
+
+
+
+const UpdateImage=()=>{
+        let preview = document.querySelector(".displayImage");
+        let file = document.querySelector(`input[type=file]`).files[0];
+        let reader = new FileReader();
+      
+        reader.addEventListener("load", () => {
+          preview.src = reader.result;
+ 
+        }, false);
+      
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+        let image=document.querySelector(`img`)
+        console.log(image.src)
+
+      };

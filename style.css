@@ -30,10 +30,9 @@ header {
 }
 
 
-.card , .cardProduct{
+.card , .cardProduct,  .cardContact{
     display:flex;
     flex-direction: column;
-    height: 80%;
     width: 25%;
     border: 1px solid grey;
     border-radius: 15px;
@@ -60,13 +59,18 @@ header {
     padding: 25px;
 }
 
-.productos {
+.productos , .contactSection{
     background-color: lightgray;
     height: auto;
+    padding-bottom: 20px;
     
 }
 
-footer, footer a , footer a {
+.contactSection {
+    height: 400px;
+}
+
+footer, footer a {
     background-color: gray;
     text-decoration: none;
     color: black;
@@ -156,7 +160,6 @@ i{
 .cartCard{
     display:flex;
     height: 200px;
-    width: auto;
     padding:20px;
     align-items: center;
     justify-content: space-around;
@@ -165,6 +168,8 @@ i{
     border-radius: 10px;
     margin: 10px 0px;
 }
+
+
 
 .cartCard .card_image{
     width:150px;
@@ -209,4 +214,40 @@ i{
     flex-direction: column;
     text-align: center;
     justify-content: space-around;
+}
+
+.QtyInput{
+    width: 100%;
+}
+
+.btnLoad{
+    background-color: lightblue;
+    border: 2px solid white;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardContact img {
+    height: 75px;
+    width: auto;
+}
+
+.displayImage{
+    width:375px;
+    height: 200px;
+    border: 1px solid black;
+    background-position: center;
+    object-fit: cover;
+}
+
+.cardContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding:25px;
 }

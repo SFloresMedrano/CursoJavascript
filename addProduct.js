@@ -1,3 +1,7 @@
+import { writeFileSync } from "fs";
+const fs = require("fs");
+const { json } = require("stream/consumers");
+
 class Productos {
     constructor (code,name,stock,price){
         this.code = code;
@@ -15,10 +19,15 @@ function BlankFields () {
 };
 
 let confirmation="";
-let selectedProduct =[], cardCount=[], arrayStock=[];
+let selectedProduct =[], cardCount=[];
+let arrayStock=[];
+
+
 
 //Agrega productos a la base de datos de productos, segun un admin
 function AddProduct (){ 
+
+
     const addProduct = document.getElementById("addProduct");
 
     addProduct.addEventListener("click",(e)=>{
@@ -46,8 +55,10 @@ function AddProduct (){
               swal("El producto ha sido agregado", {
                 icon: "success",
               });
-              arrayStock.push(newProduct);
+              fetchedProducts.push(newProduct);
               BlankFields();
+              fs.writeFileSync('file.json', JSON.stringify(fetchedProducts),json);
+              RenderProducts(fetchedProducts);
               
             } else {
                 swal("", "El producto no ha sido añadido", "error");

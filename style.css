@@ -21,7 +21,7 @@ header {
     background-image: url(./assets/img/perfiles-de-aluminio.jpg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     position: relative;
 }
 
@@ -107,8 +107,19 @@ i{
     
 }
 
+.modal-active button,#logIn ,#register{
+    background-color: lightblue;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
 .btn, .modal-container input{
     margin: 10px;
+}
+
+.modal-container input{
+    width: 250px;
+
 }
 
 .addProduct{
@@ -199,6 +210,9 @@ i{
     border: 1px solid black;
     height: 10px;
     border-radius: 10px;
+    position: absolute;
+    top: 15px;;
+    right: 15px;
 }
 
 .hide{

@@ -271,3 +271,10 @@ i{
     text-decoration: black;
 
 }
+
+.logo {
+    width: 35px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+

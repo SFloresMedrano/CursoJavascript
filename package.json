@@ -1,0 +1,24 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "Curso Javascript",
+  "main": "modal-login.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SFloresMedrano/CursoJavascript.git"
+  },
+  "author": "SFM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SFloresMedrano/CursoJavascript/issues"
+  },
+  "homepage": "https://github.com/SFloresMedrano/CursoJavascript#readme",
+  "dependencies": {
+    "file-system": "^2.2.2",
+    "node": "^v16.18.0"
+  },
+  "devDependencies": {}
+}

@@ -147,7 +147,7 @@ i{
     align-items: center;
     justify-content: space-around;
     visibility: visible;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     top: 30%;
     left: 40%;
@@ -250,4 +250,10 @@ i{
     align-items: center;
     justify-content: space-evenly;
     padding:25px;
+}
+
+.swal-title, .swal-text{
+    font-size: 2rem;
+    text-decoration: black;
+
 }

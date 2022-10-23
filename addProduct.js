@@ -1,7 +1,4 @@
-import { writeFileSync } from "fs";
-const fs = require("fs");
-const { json } = require("stream/consumers");
-
+// Constructor de productos
 class Productos {
     constructor (code,name,stock,price){
         this.code = code;
@@ -11,6 +8,7 @@ class Productos {
     };
 }
 
+//Limpia los inputs en la parte de carga de productos
 function BlankFields () {
     const input=document.querySelectorAll(".form-control");
     input.forEach(item=> {
@@ -18,16 +16,18 @@ function BlankFields () {
     });
 };
 
+//Variables globales
+
 let confirmation="";
 let selectedProduct =[], cardCount=[];
 let arrayStock=[];
 
 
 
-//Agrega productos a la base de datos de productos, segun un admin
+/* Agrega productos siendo admin, en la cola de productos.  */
 function AddProduct (){ 
 
-
+    
     const addProduct = document.getElementById("addProduct");
 
     addProduct.addEventListener("click",(e)=>{
@@ -57,7 +57,6 @@ function AddProduct (){
               });
               fetchedProducts.push(newProduct);
               BlankFields();
-              fs.writeFileSync('file.json', JSON.stringify(fetchedProducts),json);
               RenderProducts(fetchedProducts);
               
             } else {
@@ -68,7 +67,7 @@ function AddProduct (){
     });
 };
 
-//Codigo para remover productos del JSON por parte de un admin(sin finalizar)
+/* Remueve productos siendo admin de la cola de productos */
 function RemoveProduct(){
     const removeProduct = document.getElementById("removeProduct");
 

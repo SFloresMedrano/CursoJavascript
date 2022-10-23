@@ -1,7 +1,7 @@
+/* Variables globales */
 let arrayCart=[];
 
-
-
+/* Render de tarjetas de producto */
 function RenderProducts(data){
         let mainContainer=document.getElementById("productContainer");
         mainContainer.innerHTML="";
@@ -27,9 +27,7 @@ function RenderProducts(data){
             const LoadButton=document.getElementById(`button${element.code}`)
             LoadButton.addEventListener("click",()=>{
                ClientCartAdd(element.code);
-
-                })
-            }
-        )
+                });
+            });
     };
 

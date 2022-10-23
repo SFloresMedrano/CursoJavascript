@@ -1,29 +1,32 @@
+/* Busca productos por nombre o codigo */
 function SearchProduct(){
     const buscador=document.getElementById("buscador");
-    const container=document.getElementById("container");
-    
+    const cardProduct=document.getElementById("mainContainer");
+
     buscador.addEventListener("input",()=>{
- 
         let searchInput = buscador.value.toLowerCase();
         let foundItem = fetchedProducts.findIndex(item=> item.code === searchInput);
         let foundItemName = fetchedProducts.findIndex(item=>item.name === searchInput);
-        console.log(foundItemName)
 
         if (foundItem>=0){
             let newProduct = new Productos(0,"",0,0);
             newProduct = fetchedProducts[foundItem];
             ShowSearchedProduct(newProduct);
+
+            cardProduct.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+
         }else if(foundItemName>=0){
             let newProduct = new Productos(0,"",0,0);
             newProduct = fetchedProducts[foundItemName];
-            console.log("Encontrado")
             ShowSearchedProduct(newProduct);
+            cardProduct.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         }else{
             RenderProducts(fetchedProducts);
         };
     });
 };
 
+/* Renderiza el producto encontrado */
 function ShowSearchedProduct(element){
     
     let container=document.getElementById("productContainer")
@@ -51,5 +54,3 @@ function ShowSearchedProduct(element){
         ClientCartAdd(element.code);
     });
 };
-
-SearchProduct();

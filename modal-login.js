@@ -1,14 +1,16 @@
+/* Variables globales */
+
 const modalContainer= document.querySelector(".modal-container");
 const openLogin = document.getElementById("open");
 const closeLogin  = document.getElementById("cerrar");
 const modalLogin = document.getElementById(".modal-login");
 let uploadedImage="";
-
-
 let arrayStockStorage=[], clientCartStorage=[],fetchedProducts=[];
 
+/* Carga de pantalla */
 window.onload=()=>{
     fetchProducts();
+    SearchProduct();
     scrollProducts();   
     scrollContact();
 
@@ -40,6 +42,7 @@ window.onload=()=>{
      }
 }
 
+/* Envio a almacenamiento antes del cierre de browser */
 window.onbeforeunload=()=>{
     if(clientCart.length>0){
         localStorage.setItem("clientCartStorage",JSON.stringify(clientCart));
@@ -120,6 +123,7 @@ function AdminSection (){
 
 };
 
+/* Deslogueo */
 function LogoutButton(){
     let logoutButton=document.createElement("div");
     logoutButton.classList.add("logoutButton");
@@ -176,6 +180,22 @@ logIn.addEventListener("click",()=>{
         };
 });
 
+/* Precarga de imagenes para los productos */
+const UpdateImage=()=>{
+    let preview = document.querySelector(".displayImage");
+    let file = document.querySelector(`input[type=file]`).files[0];
+    let reader = new FileReader();
+  
+    reader.addEventListener("load", () => {
+      preview.src = reader.result;
+    }, false);
+
+    file ? true : ()=>{reader.readAsDataURL(file)};
+
+    let image=document.querySelector(`img`);
+  };
+
+/* Importacion de productos desde el local JSON */
 const fetchProducts=async()=>{
     let respuesta = await fetch("./products.json")
     let data= await respuesta.json();
@@ -183,11 +203,12 @@ const fetchProducts=async()=>{
     fetchedProducts=[...data]
 };
 
+/* Scroll a varias partes de la pagina */
 const scrollProducts=()=>{
     let productsButton=document.getElementById("productsButton");
     productsButton.addEventListener("click",()=>{
         let products=document.getElementById("productos")
-        products.scrollIntoView();
+        products.scrollIntoView({behavior: "smooth", inline: "nearest"});
     });
 };
 
@@ -195,26 +216,8 @@ const scrollContact=()=>{
     let productsButton=document.getElementById("contactButton");
     productsButton.addEventListener("click",()=>{
         let contact=document.getElementById("contactSection")
-        contact.scrollIntoView();
+        contact.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
     });
 };
 
 
-
-const UpdateImage=()=>{
-        let preview = document.querySelector(".displayImage");
-        let file = document.querySelector(`input[type=file]`).files[0];
-        let reader = new FileReader();
-      
-        reader.addEventListener("load", () => {
-          preview.src = reader.result;
- 
-        }, false);
-      
-        if (file) {
-          reader.readAsDataURL(file);
-        }
-        let image=document.querySelector(`img`)
-        console.log(image.src)
-
-      };

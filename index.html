@@ -120,26 +120,33 @@
                 </div>
           </div>
         </section>
-        <section id="contactSection" class="contactSection d-flex flex-wrap justify-content-around">
-          <h2 class="subtiulo container-fluid text-center" id="subtitulo">Contacto</h2>
-          <div class="cardContact align-items-center container row g-6 justify-content-around d-flex p-3 flex-wrap " id="">
-            <img src="./assets/img/comercial.png" alt=""/>  
-            <h3 class="cardTitle">Comercial</h3>
-            <p>Nuestro sector comercial está capacitado para brindarle la mejor atención.</p>     
+        <section id="contactSection" class="contactSection d-flex row flex-wrap justify-content-center g-3">
+
+          <div>
+            <h2 class="subtiulo container-fluid text-center" id="subtitulo">Contacto</h2>
           </div>
-          <div class="cardContact align-items-center container row g-6 justify-content-around d-flex p-3 flex-wrap" id="">   
-            <img src="./assets/img/providers.png" alt=""/>
-            <h3 class="cardTitle">Proveedores</h3>
-            <p>Si desea ser parte de nuestros proveedores, comuniquese con nosotros. </p>         
+
+          <div class="d-flex container justify-content-center row g-3">
+            <div class="cardContact col-md-2 align-items-center g-2 justify-content-center d-flex p-3 flex-wrap  " id="">
+              <img src="./assets/img/comercial.png" alt=""/>  
+              <h3 class="cardTitle">Comercial</h3>
+              <p>Nuestro sector comercial está capacitado para brindarle la mejor atención.</p>     
+            </div>
+            <div class="cardContact col-md-2 align-items-center row g-2 justify-content-center d-flex p-3 flex-wrap" id="">   
+              <img src="./assets/img/providers.png" alt=""/>
+              <h3 class="cardTitle">Proveedores</h3>
+              <p>Si desea ser parte de nuestros proveedores, comuniquese con nosotros. </p>         
+            </div>
+            <div class="cardContact col-md-2 align-items-center row g-2 justify-content-center d-flex p-3 flex-wrap" id=""> 
+              <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              </svg>  
+              <h3 class="cardTitle">Donde Encontrarnos</h3>
+              <p>Nuestras oficinas se encuentran en calle Feliz 123, Localidad Soñada, Argentina. </p>         
+            </div>
           </div>
-          <div class="cardContact align-items-center container row g-6 justify-content-around d-flex p-3 flex-wrap container-sm" id=""> 
-            <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-              <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
-              <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-            </svg>  
-            <h3 class="cardTitle">Donde Encontrarnos</h3>
-            <p>Nuestras oficinas se encuentran en calle Feliz 123, Localidad Soñada, Argentina. </p>         
-          </div>
+
           
 
         </section>
@@ -148,7 +155,7 @@
 
     <!-- footer  -->
     <footer class="footer d-flex justify-content-around">
-      <div class="container m-0 row d-flex align-items-center">
+      <div class="container m-0 row d-flex align-items-center justify-content-around">
         <div class="footer_div col-md-2">
           <a href="./index.html" class="logo">
               <img src="" alt=""/> 
@@ -157,9 +164,7 @@
         <div class="footer_div col-md-2">
             <a href="./index.html">Inicio</a>
         </div>
-        <div class="footer_div col-md-2">
-            <a href="">Nosotros</a>
-        </div>
+
         <div class="footer_div col-md-2">
             <a href="">Productos</a>
         </div>
@@ -185,8 +190,9 @@
      </div>
     </footer>
 
+    
     <script src="./modal-login.js"></script>
-    <script type="module" src="./addProduct.js"></script>
+    <script src="./addProduct.js"></script>
     <script src="./renderProducts.js"></script>
     <script src="./clientCart.js"></script>
     <script src="./searchInput.js"></script>
